@@ -259,7 +259,8 @@
     }
 
     /* ════════════════════════════════════
-       LOGO — CÍRCULOS CONCÊNTRICOS CORRIGIDOS
+       LOGO — CORRIGIDA (a imagem já tem o círculo amarelo)
+       Removidos: .logo-ring, .logo-ring-spin, border-radius, border
     ════════════════════════════════════ */
     .logo-wrap {
       position: relative;
@@ -280,41 +281,6 @@
       100% { transform: translateY(0)    scale(1); }
     }
 
-    /* Anel dourado principal - agora mais grosso e próximo da logo */
-    .logo-ring {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      box-shadow: 0 0 20px var(--gold-glow), 0 0 55px rgba(245,184,0,0.18);
-      animation: ringPulse 4s ease-in-out infinite;
-    }
-
-    @keyframes ringPulse {
-      0%, 100% {
-        box-shadow: 0 0 20px rgba(245,184,0,0.35), 0 0 55px rgba(245,184,0,0.1);
-        border-color: var(--gold);
-      }
-      50% {
-        box-shadow: 0 0 32px rgba(245,184,0,0.55), 0 0 80px rgba(245,184,0,0.2);
-        border-color: var(--gold-bright);
-      }
-    }
-
-    /* Anel giratório externo - fino e elegante */
-    .logo-ring-spin {
-      position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      border: 1px dashed rgba(245,184,0,0.3);
-      animation: spinRing 22s linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes spinRing {
-      to { transform: rotate(360deg); }
-    }
-
     .logo-inner {
       position: relative;
       z-index: 2;
@@ -325,21 +291,22 @@
       height: 100%;
     }
 
-    /* Logo com fundo circular - agora com borda dourada fina e tamanho ajustado */
+    /* Logo pura — sem círculos extras, pois a imagem já tem o círculo amarelo */
     .main-logo {
-      width: 160px;
-      height: 160px;
+      width: 148px;
+      height: 148px;
       object-fit: contain;
-      border-radius: 50%;
-      border: 2px solid rgba(245,184,0,0.5);
+      /* REMOVIDO: border-radius (a imagem já é redonda) */
+      /* REMOVIDO: border (a imagem já tem borda dourada) */
       filter: drop-shadow(0 0 12px rgba(245,184,0,0.45))
               drop-shadow(0 0 28px rgba(245,184,0,0.25));
-      background: #000;
-      transition: border-color 0.3s;
+      transition: filter 0.3s;
     }
 
+    /* Efeito de brilho ao passar o mouse */
     .logo-wrap:hover .main-logo {
-      border-color: var(--gold);
+      filter: drop-shadow(0 0 18px rgba(245,184,0,0.6))
+              drop-shadow(0 0 35px rgba(245,184,0,0.3));
     }
 
     .logo-text-hub {
@@ -772,8 +739,6 @@
       .status-dots, .btn-row-label { display: none; }
       main { padding: 36px 16px 48px; }
       .logo-wrap { width: 138px; height: 138px; }
-      .logo-ring { inset: -3px; }
-      .logo-ring-spin { inset: -8px; }
       .main-logo { width: 115px; height: 115px; }
       .feat { width: 68px; padding: 12px 6px; }
       .feat svg { width: 22px; height: 22px; }
@@ -839,10 +804,8 @@
 
 <main>
 
-  <!-- LOGO CORRIGIDA - CÍRCULOS CONCÊNTRICOS -->
+  <!-- LOGO CORRIGIDA - SEM ANÉIS EXTRAS (a imagem já tem o círculo) -->
   <div class="logo-wrap">
-    <div class="logo-ring-spin"></div>
-    <div class="logo-ring"></div>
     <div class="logo-inner">
       <img src="bookhub-logo.png" alt="BookHub Logo" class="main-logo">
     </div>
